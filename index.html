@@ -484,7 +484,7 @@
       function revealExtras() {
         document.getElementById("extras")?.classList.remove("hidden");
       }
-      function handleSubmit(e) {
+      async function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
         const data = {
@@ -492,14 +492,26 @@
           wtp: form.wtp ? (form.wtp.value || null) : null,
           pain: form.pain ? form.pain.value : null,
         };
-        // TODO: wire to a real waitlist endpoint (Formspree / Tally / ConvertKit / custom)
-        console.log("waitlist signup:", data);
         const button = form.querySelector("button");
-        button.textContent = "✓ on the list";
+        const original = button.textContent;
+        button.textContent = "...";
         button.disabled = true;
-        form.email.disabled = true;
-        if (form.pain) form.pain.disabled = true;
-        if (form.wtp) Array.from(form.wtp).forEach(r => r.disabled = true);
+        try {
+          const res = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          if (!res.ok) throw new Error("request failed");
+          button.textContent = "✓ on the list";
+          form.email.disabled = true;
+          if (form.pain) form.pain.disabled = true;
+          if (form.wtp) Array.from(form.wtp).forEach(r => r.disabled = true);
+        } catch (err) {
+          button.textContent = original;
+          button.disabled = false;
+          alert("something broke. try again in a sec.");
+        }
         return false;
       }
     </script>
