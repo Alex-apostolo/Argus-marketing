@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>argus // about</title>
+    <meta name="description" content="Who's building Argus, and why." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --bg: #0a0e0a;
+        --bg-raised: #0f1410;
+        --bg-hover: #131a14;
+        --border: #1f2a20;
+        --border-bright: #2d4030;
+        --text: #c8d4c8;
+        --text-muted: #6b8270;
+        --text-dim: #3d4f40;
+        --accent: #4ade80;
+        --accent-bright: #86efac;
+        --accent-dim: #166534;
+        --warn: #fbbf24;
+        --error: #ef4444;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings:
+          "calt" 1,
+          "liga" 1;
+      }
+      body {
+        background-image:
+          radial-gradient(ellipse at top, rgba(74, 222, 128, 0.06), transparent 60%),
+          repeating-linear-gradient(
+            0deg,
+            rgba(74, 222, 128, 0.012) 0px,
+            rgba(74, 222, 128, 0.012) 1px,
+            transparent 1px,
+            transparent 3px
+          );
+        min-height: 100vh;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .accent-bright {
+        color: var(--accent-bright);
+      }
+      .text-muted {
+        color: var(--text-muted);
+      }
+      .text-dim {
+        color: var(--text-dim);
+      }
+      .border-soft {
+        border-color: var(--border);
+      }
+      .border-bright {
+        border-color: var(--border-bright);
+      }
+
+      .term {
+        background: var(--bg-raised);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .term-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: #0c110d;
+        border-bottom: 1px solid var(--border);
+        font-size: 11px;
+        color: var(--text-dim);
+      }
+      .term-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #1f2a20;
+        border: 1px solid #2d4030;
+      }
+      .term-body {
+        padding: 18px 20px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .prompt-user {
+        color: var(--accent);
+      }
+      .cursor {
+        display: inline-block;
+        width: 9px;
+        height: 1.1em;
+        background: var(--accent);
+        vertical-align: text-bottom;
+        animation: blink 1.05s steps(1) infinite;
+        margin-left: 2px;
+        box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .glow-edge {
+        border: 1px solid var(--border-bright);
+        box-shadow:
+          inset 0 0 0 1px rgba(74, 222, 128, 0.04),
+          0 0 30px rgba(74, 222, 128, 0.05);
+      }
+
+      .photo-frame {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        background: var(--bg-raised);
+        border: 1px solid var(--border-bright);
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        display: block;
+        filter: saturate(0.85) contrast(1.05);
+      }
+      .photo-placeholder {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--text-dim);
+        text-align: center;
+        white-space: pre;
+        line-height: 1.4;
+      }
+
+      a {
+        color: inherit;
+      }
+      a:hover {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="max-w-5xl mx-auto px-5 py-5 flex items-center justify-between text-sm">
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="flex items-center gap-2 hover:no-underline">
+          <span class="text-dim">[</span>
+          <span class="accent font-semibold">argus@hunter</span>
+          <span class="text-muted">:</span>
+          <span class="text-muted">~/about</span>
+          <span class="text-dim">]</span>
+          <span class="accent">$</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="text-muted hover:accent-bright">./home.sh</a>
+        <a href="index.html#waitlist" class="text-muted hover:accent-bright">./join.sh</a>
+      </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-5 pt-10 pb-24">
+      <!-- HEADER -->
+      <section class="mb-10">
+        <div class="text-xs text-dim mb-3 tracking-wider">$ whoami</div>
+        <h1 class="text-3xl sm:text-4xl font-semibold leading-tight tracking-tight">
+          Hi, I'm Alex.<span class="cursor"></span>
+        </h1>
+      </section>
+
+      <!-- PHOTO + INTRO (text wraps around floated photo) -->
+      <section class="mb-14 clearfix">
+        <div class="photo-frame glow-edge sm:float-left sm:mr-6 sm:mb-3 sm:w-[180px]">
+          <img src="photo.jpg" alt="Alex" />
+        </div>
+
+        <div class="text-base leading-relaxed text-muted space-y-4">
+          <p>
+            I'm a software engineer who likes building things and solving complex problems. I helped take
+            <a
+              href="https://github.com/aipotheosis-labs/aci"
+              target="_blank"
+              rel="noopener"
+              class="text-[color:var(--text)] font-semibold hover:accent-bright underline decoration-dotted underline-offset-4"
+              >aci.dev</a
+            >
+            open-source to 4k GitHub stars in its first week, and before that helped
+            <strong class="text-[color:var(--text)] font-semibold">ToffeeX</strong> reimagine their product. On the
+            research side, I have a MSc in AI from
+            <strong class="text-[color:var(--text)] font-semibold">Imperial</strong> and have published at
+            <a
+              href="https://www.researchgate.net/publication/401133321_Gecko_A_Simulation_Environment_with_Stateful_Feedback_for_Refining_Agent_Tool_Calls"
+              target="_blank"
+              rel="noopener"
+              class="text-[color:var(--text)] font-semibold hover:accent-bright underline decoration-dotted underline-offset-4"
+              >ICML</a
+            >.
+          </p>
+          <p>
+            Bug bounty hunting is newer territory for me. I started a few months ago and immediately hit the same wall
+            everyone hits: too much advice, picked-clean targets, and "findings" that turn out to be confirmation bias.
+            I'm building Argus because that gap is much wider than it should be — and I think it's an engineering
+            problem more than a knowledge problem.
+          </p>
+        </div>
+        <div class="clear-both"></div>
+      </section>
+
+      <!-- THE STORY -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-dim">──</span>
+          <h2 class="text-sm tracking-widest text-muted">WHY&nbsp;I'M&nbsp;BUILDING&nbsp;THIS</h2>
+          <span class="text-dim flex-1 border-t border-soft"></span>
+        </div>
+
+        <div class="space-y-4 text-[color:var(--text)] text-[15px] leading-relaxed">
+          <p>
+            A few months ago I started hunting bugs in my evenings. Most evenings ended with a closed laptop and nothing
+            to show. 30 minutes setting up tools, hours probing endpoints that 1,000 hunters had already probed, and
+            "findings" that turned out to be confirmation bias I'd been chasing for an afternoon.
+          </p>
+          <p>
+            So I started building the thing I wished existed. Something that picks a target the scanners haven't farmed,
+            sets up the workspace, and tells me whether a finding is worth writing up before I burn an afternoon on the
+            report. I'm using it on my own hunts. Making it public because I'm probably not the only one stuck in this
+            loop.
+          </p>
+        </div>
+      </section>
+
+      <!-- TALK TO ME -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-dim">──</span>
+          <h2 class="text-sm tracking-widest text-muted">REACH&nbsp;OUT&nbsp;TO&nbsp;ME</h2>
+          <span class="text-dim flex-1 border-t border-soft"></span>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div>
+            <span class="text-dim">email</span> &nbsp;&nbsp;
+            <a href="mailto:alex-apostolo@hotmail.com" class="accent-bright">alex-apostolo@hotmail.com</a>
+          </div>
+          <div>
+            <span class="text-dim">github</span> &nbsp;
+            <a href="https://github.com/Alex-apostolo" class="accent-bright">github.com/Alex-apostolo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- BACK TO HOME / WAITLIST CTA -->
+      <section class="text-center">
+        <p class="text-muted text-sm mb-4">if any of this resonated, the waitlist is open.</p>
+        <a
+          href="index.html#waitlist"
+          class="inline-block px-5 py-2.5 rounded text-sm font-bold"
+          style="background: var(--accent); color: #06140a; border: 1px solid var(--accent)"
+        >
+          ./join.sh
+        </a>
+      </section>
+    </main>
+
+    <footer class="max-w-3xl mx-auto px-5 py-10 text-xs text-dim border-t border-soft">
+      <div class="flex items-center justify-between">
+        <span># argus &mdash; built by hunters, for hunters</span>
+        <span class="text-dim">EOF</span>
+      </div>
+    </footer>
+  </body>
+</html>

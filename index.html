@@ -197,7 +197,7 @@
         <span class="accent">$</span>
       </div>
       <div class="flex items-center gap-5">
-        <span class="badge"><span class="dot"></span>private beta</span>
+        <a href="about.html" class="text-muted hover:accent-bright">./about.sh</a>
         <a href="#waitlist" class="text-muted hover:accent-bright">./join.sh</a>
       </div>
     </nav>
@@ -215,15 +215,13 @@
   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
         </div>
 
-        <p class="text-xs text-muted mb-3 tracking-wider">// GUIDED BUG BOUNTY HUNTS &nbsp;·&nbsp; PRE-BUILT WORKSPACE &nbsp;·&nbsp; AI VALIDATOR</p>
-
         <h1 class="text-3xl sm:text-5xl font-semibold leading-tight mb-6 tracking-tight">
-          Stop wasting hunts on<br />
-          findings that go nowhere<span class="cursor"></span>
+          For hunters tired<br />
+          of dead ends.<span class="cursor"></span>
         </h1>
 
         <p class="text-base sm:text-lg text-muted mb-10 max-w-2xl leading-relaxed">
-          Argus picks your target, plans the recon, hands you a sandboxed workspace with every tool already installed, and validates findings before you write the report.
+          Argus picks your target, hunts with you in the terminal, and checks every finding against the program's real triage history.
         </p>
 
         <form id="waitlist" class="term max-w-xl" onsubmit="return handleSubmit(event)">
@@ -238,12 +236,50 @@
             <div class="mb-3 text-muted">&gt; enter email to receive beta invite:</div>
             <div class="flex flex-col sm:flex-row gap-2">
               <input type="email" name="email" required placeholder="you@example.com" autocomplete="email"
+                onfocus="revealExtras()"
                 class="input flex-1 rounded px-3 py-2 text-sm" />
               <button type="submit" class="btn rounded px-5 py-2 text-sm cursor-pointer whitespace-nowrap">
                 ./submit
               </button>
             </div>
-            <p class="text-xs text-dim mt-3"># no spam. one email when the beta opens.</p>
+
+            <div id="extras" class="hidden mt-5 pt-4 border-t border-soft space-y-5">
+              <div>
+                <div class="text-muted text-sm mb-2">&gt; what would you pay per month?</div>
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
+                    <input type="radio" name="wtp" value="0" class="accent-green-500" />
+                    <span>$0</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
+                    <input type="radio" name="wtp" value="5-10" class="accent-green-500" />
+                    <span>$5–10</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
+                    <input type="radio" name="wtp" value="11-25" class="accent-green-500" />
+                    <span>$11–25</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
+                    <input type="radio" name="wtp" value="26-50" class="accent-green-500" />
+                    <span>$26–50</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
+                    <input type="radio" name="wtp" value="50+" class="accent-green-500" />
+                    <span>$50+</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-muted text-sm mb-2">&gt; what's the most frustrating part of bug bounty hunting for you right now?</div>
+                <textarea name="pain" rows="2" placeholder="e.g. picking a target, setting up tooling, never finding anything reportable..."
+                  class="input w-full rounded px-3 py-2 text-sm leading-relaxed resize-none"></textarea>
+              </div>
+
+              <p class="text-xs text-dim">// optional, but helps us prioritize who gets in first.</p>
+            </div>
+
+            <p class="text-xs text-dim mt-3"># no spam. one email when early access opens.</p>
           </div>
         </form>
       </section>
@@ -324,14 +360,14 @@
             <summary class="term-bar !justify-start">
               <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
               <span class="ml-2 accent">[01]</span>
-              <span class="ml-2 text-muted">staring at HackerOne, no idea where to start</span>
+              <span class="ml-2 text-muted">40 hours of tutorials in. zero bugs found.</span>
               <span class="ml-auto chev text-dim">›</span>
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">picked a program, opened 4 subdomains, scrolled the scope page for an hour, closed laptop.</div>
+              <div class="text-muted mb-3">portswigger academy done. 12 youtube playlists watched. you still don't know what to do on a real program at 9pm on a tuesday.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>argus asks 4 questions about your skills and time, picks a target, and hands you a plan tailored to that specific app — not a generic "try IDOR" checklist.</div>
+              <div>argus replaces the next tutorial with a real workflow — a target picked for your level, a plan for that specific app, tools already loaded. you start hunting in minutes, not months.</div>
             </div>
           </details>
 
@@ -339,14 +375,14 @@
             <summary class="term-bar !justify-start">
               <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
               <span class="ml-2 accent">[02]</span>
-              <span class="ml-2 text-muted">30 minutes of plumbing before every hunt</span>
+              <span class="ml-2 text-muted">every endpoint you find has been hunted by 1,000 others</span>
               <span class="ml-auto chev text-dim">›</span>
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">subfinder, httpx, nuclei, ffuf, proxy, notes file, browser w/ plugins. every. single. time.</div>
+              <div class="text-muted mb-3">the obvious targets are picked clean. automated scanners and the top 1% have farmed every login flow and api endpoint worth looking at. you're competing for crumbs.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>sandboxed workspace, ready in seconds. tools pre-installed, last session restored, scoped to the target you picked.</div>
+              <div>argus scores programs by saturation and points you at the corners the scanners and pros skip — niche flows, recent scope additions, programs without an army of hunters already on them.</div>
             </div>
           </details>
 
@@ -354,14 +390,14 @@
             <summary class="term-bar !justify-start">
               <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
               <span class="ml-2 accent">[03]</span>
-              <span class="ml-2 text-muted">wrote a report, got closed as informational</span>
+              <span class="ml-2 text-muted">spent 4 hours on a "bug" that wasn't a bug</span>
               <span class="ml-auto chev text-dim">›</span>
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">most beginner reports are dupes, low-impact, or out of scope — and you only find out after the writeup.</div>
+              <div class="text-muted mb-3">a weird response, a hunch, a rabbit hole. you wrote up the PoC. triage closed it as informational. it was confirmation bias the whole time.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>AI validator scores your finding before you submit: reportable, needs-more-evidence, or not worth the writeup. with reasons.</div>
+              <div>the validator checks your finding against the program's real triage history — accepted reports, rejected reports, common dupe patterns. you find out it's not a bug *before* you spend the afternoon writing it up.</div>
             </div>
           </details>
 
@@ -369,14 +405,14 @@
             <summary class="term-bar !justify-start">
               <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
               <span class="ml-2 accent">[04]</span>
-              <span class="ml-2 text-muted">lost context between hunts</span>
+              <span class="ml-2 text-muted">6 months in. no idea if you're getting better.</span>
               <span class="ml-auto chev text-dim">›</span>
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">last week's finding is buried in notion, a screenshot, and a half-finished curl command somewhere.</div>
+              <div class="text-muted mb-3">some weeks you find things, some weeks you don't. you can't tell if you're improving, plateauing, or just lucky. progress feels like vibes.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>everything for one program in one place — a mind-map of what you've found, ruled out, and still want to probe.</div>
+              <div>every hunt is logged — targets picked, time spent, findings, validator scores, outcomes. you see what's actually moving the needle and what's burning your evenings.</div>
             </div>
           </details>
         </div>
@@ -398,8 +434,8 @@
               <p class="text-muted mt-3 ml-5">hunters who've done a few CTFs or labs but haven't landed paid bounties consistently. if you can read burp output but get stuck deciding what to actually try, this is for you.</p>
             </details>
             <details class="border-b border-soft py-3">
-              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>does it run exploits for me?</span></summary>
-              <p class="text-muted mt-3 ml-5">no. argus plans, sets up your environment, and validates findings. you're still the one driving — it just removes the dead time.</p>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>how much does argus do vs. me?</span></summary>
+              <p class="text-muted mt-3 ml-5">argus picks the target, runs the recon alongside you, and checks every finding against the program's triage history. you make the calls. what's worth digging into, what to escalate, what to submit. it's a co-pilot, not an autopilot.</p>
             </details>
             <details class="border-b border-soft py-3">
               <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>which platforms does it support?</span></summary>
@@ -407,10 +443,10 @@
             </details>
             <details class="border-b border-soft py-3">
               <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>what does it cost?</span></summary>
-              <p class="text-muted mt-3 ml-5">beta is free for early hunters. pricing TBD — likely a flat monthly with a generous free tier.</p>
+              <p class="text-muted mt-3 ml-5">free for early access. pricing TBD — likely a flat monthly with a generous free tier.</p>
             </details>
             <details class="py-3">
-              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>when's the beta?</span></summary>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>when does it open?</span></summary>
               <p class="text-muted mt-3 ml-5">rolling invites starting soon. waitlist gets first access.</p>
             </details>
           </div>
@@ -421,10 +457,10 @@
       <section class="mb-12">
         <div class="ascii text-[10px] sm:text-xs mb-6 select-none text-center" aria-hidden="true">
 ╔══════════════════════════════════════════╗
-║   READY TO HUNT WITHOUT THE BUSYWORK?    ║
+║       STOP HUNTING IN THE DARK.          ║
 ╚══════════════════════════════════════════╝
         </div>
-        <p class="text-muted text-center mb-6 text-sm">small private beta. drop your email, we'll be in touch.</p>
+        <p class="text-muted text-center mb-6 text-sm">early access is opening soon. drop your email, we'll be in touch.</p>
         <form class="flex flex-col sm:flex-row gap-2 max-w-xl mx-auto" onsubmit="return handleSubmit(event)">
           <input type="email" name="email" required placeholder="you@example.com" autocomplete="email"
             class="input flex-1 rounded px-3 py-2.5 text-sm" />
@@ -443,16 +479,25 @@
     </footer>
 
     <script>
+      function revealExtras() {
+        document.getElementById("extras")?.classList.remove("hidden");
+      }
       function handleSubmit(e) {
         e.preventDefault();
         const form = e.target;
-        const email = form.email.value;
+        const data = {
+          email: form.email.value,
+          wtp: form.wtp ? (form.wtp.value || null) : null,
+          pain: form.pain ? form.pain.value : null,
+        };
         // TODO: wire to a real waitlist endpoint (Formspree / Tally / ConvertKit / custom)
-        console.log("waitlist signup:", email);
+        console.log("waitlist signup:", data);
         const button = form.querySelector("button");
         button.textContent = "✓ on the list";
         button.disabled = true;
         form.email.disabled = true;
+        if (form.pain) form.pain.disabled = true;
+        if (form.wtp) Array.from(form.wtp).forEach(r => r.disabled = true);
         return false;
       }
     </script>
