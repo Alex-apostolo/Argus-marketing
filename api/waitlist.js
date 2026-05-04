@@ -1,5 +1,7 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 import { Resend } from "resend";
+
+const kv = Redis.fromEnv();
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
