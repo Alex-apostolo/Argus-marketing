@@ -502,7 +502,12 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
           });
-          if (!res.ok) throw new Error("request failed");
+          if (!res.ok) {
+            const body = await res.json().catch(() => ({}));
+            const err = new Error(body.error || "request failed");
+            err.userFacing = res.status >= 400 && res.status < 500 && Boolean(body.error);
+            throw err;
+          }
           button.textContent = "✓ on the list";
           form.email.disabled = true;
           if (form.pain) form.pain.disabled = true;
@@ -510,7 +515,7 @@
         } catch (err) {
           button.textContent = original;
           button.disabled = false;
-          alert("something broke. try again in a sec.");
+          alert(err.userFacing ? err.message : "something broke. try again in a sec.");
         }
         return false;
       }
