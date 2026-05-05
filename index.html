@@ -4,16 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>argus // guided bug bounty hunts</title>
-    <meta
-      name="description"
-      content="Personalized hunt plan. Pre-built workspace. AI validator that tells you when a bug is worth reporting."
-    />
+    <meta name="description" content="Personalized hunt plan. Pre-built workspace. AI validator that tells you when a bug is worth reporting." />
 
     <meta property="og:title" content="argus // guided bug bounty hunts" />
-    <meta
-      property="og:description"
-      content="Personalized plan. Pre-built workspace. AI that validates findings before triage closes them."
-    />
+    <meta property="og:description" content="Personalized plan. Pre-built workspace. AI that validates findings before triage closes them." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -21,10 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -44,56 +35,35 @@
         --warn: #fbbf24;
         --error: #ef4444;
       }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
+      * { box-sizing: border-box; }
+      html, body {
         background: var(--bg);
         color: var(--text);
         font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-feature-settings:
-          "calt" 1,
-          "liga" 1;
+        font-feature-settings: "calt" 1, "liga" 1;
       }
       body {
         background-image:
-          radial-gradient(ellipse at top, rgba(74, 222, 128, 0.06), transparent 60%),
+          radial-gradient(ellipse at top, rgba(74,222,128,0.06), transparent 60%),
           repeating-linear-gradient(
             0deg,
-            rgba(74, 222, 128, 0.012) 0px,
-            rgba(74, 222, 128, 0.012) 1px,
+            rgba(74,222,128,0.012) 0px,
+            rgba(74,222,128,0.012) 1px,
             transparent 1px,
             transparent 3px
           );
         min-height: 100vh;
       }
-      .accent {
-        color: var(--accent);
-      }
-      .accent-bright {
-        color: var(--accent-bright);
-      }
-      .text-muted {
-        color: var(--text-muted);
-      }
-      .text-dim {
-        color: var(--text-dim);
-      }
-      .warn {
-        color: var(--warn);
-      }
-      .error {
-        color: var(--error);
-      }
-      .border-soft {
-        border-color: var(--border);
-      }
-      .border-bright {
-        border-color: var(--border-bright);
-      }
+      .accent { color: var(--accent); }
+      .accent-bright { color: var(--accent-bright); }
+      .text-muted { color: var(--text-muted); }
+      .text-dim { color: var(--text-dim); }
+      .warn { color: var(--warn); }
+      .error { color: var(--error); }
+      .border-soft { border-color: var(--border); }
+      .border-bright { border-color: var(--border-bright); }
 
       .ascii {
         font-family: "JetBrains Mono", monospace;
@@ -101,7 +71,7 @@
         line-height: 1.05;
         letter-spacing: 0;
         color: var(--accent);
-        text-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+        text-shadow: 0 0 12px rgba(74,222,128,0.35);
       }
 
       .term {
@@ -148,12 +118,10 @@
         vertical-align: text-bottom;
         animation: blink 1.05s steps(1) infinite;
         margin-left: 2px;
-        box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+        box-shadow: 0 0 8px rgba(74,222,128,0.6);
       }
       @keyframes blink {
-        50% {
-          opacity: 0;
-        }
+        50% { opacity: 0; }
       }
 
       .input {
@@ -162,13 +130,11 @@
         color: var(--text);
         font-family: inherit;
       }
-      .input::placeholder {
-        color: var(--text-dim);
-      }
+      .input::placeholder { color: var(--text-dim); }
       .input:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.12);
+        box-shadow: 0 0 0 3px rgba(74,222,128,0.12);
       }
       .btn {
         background: var(--accent);
@@ -180,13 +146,9 @@
       .btn:hover {
         background: var(--accent-bright);
         border-color: var(--accent-bright);
-        box-shadow: 0 0 18px rgba(74, 222, 128, 0.4);
+        box-shadow: 0 0 18px rgba(74,222,128,0.4);
       }
-      .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        box-shadow: none;
-      }
+      .btn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
 
       .badge {
         display: inline-flex;
@@ -200,51 +162,30 @@
         background: var(--bg-raised);
       }
       .badge .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
+        width: 6px; height: 6px; border-radius: 50%;
         background: var(--accent);
         box-shadow: 0 0 6px var(--accent);
         animation: pulse 1.8s ease-in-out infinite;
       }
       @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
+        0%,100% { opacity: 1; }
+        50% { opacity: 0.4; }
       }
 
-      details > summary {
-        list-style: none;
-        cursor: pointer;
-      }
-      details > summary::-webkit-details-marker {
-        display: none;
-      }
-      details[open] .chev {
-        transform: rotate(90deg);
-      }
-      .chev {
-        display: inline-block;
-        transition: transform 0.15s;
-      }
+      details > summary { list-style: none; cursor: pointer; }
+      details > summary::-webkit-details-marker { display: none; }
+      details[open] .chev { transform: rotate(90deg); }
+      .chev { display: inline-block; transition: transform 0.15s; }
 
       .glow-edge {
         border: 1px solid var(--border-bright);
         box-shadow:
-          inset 0 0 0 1px rgba(74, 222, 128, 0.04),
-          0 0 30px rgba(74, 222, 128, 0.05);
+          inset 0 0 0 1px rgba(74,222,128,0.04),
+          0 0 30px rgba(74,222,128,0.05);
       }
 
-      a {
-        color: inherit;
-      }
-      a:hover {
-        color: var(--accent);
-      }
+      a { color: inherit; }
+      a:hover { color: var(--accent); }
     </style>
   </head>
   <body>
@@ -264,12 +205,16 @@
     </nav>
 
     <main class="max-w-4xl mx-auto px-5 pt-10 pb-24">
+
       <!-- HERO -->
       <section class="mb-20">
         <div class="ascii text-[9px] sm:text-[13px] mb-8 select-none" aria-hidden="true">
-          █████╗ ██████╗ ██████╗ ██╗ ██╗███████╗ ██╔══██╗██╔══██╗██╔════╝ ██║ ██║██╔════╝ ███████║██████╔╝██║ ███╗██║
-          ██║███████╗ ██╔══██║██╔══██╗██║ ██║██║ ██║╚════██║ ██║ ██║██║ ██║╚██████╔╝╚██████╔╝███████║ ╚═╝ ╚═╝╚═╝ ╚═╝
-          ╚═════╝ ╚═════╝ ╚══════╝
+   █████╗ ██████╗  ██████╗ ██╗   ██╗███████╗
+  ██╔══██╗██╔══██╗██╔════╝ ██║   ██║██╔════╝
+  ███████║██████╔╝██║  ███╗██║   ██║███████╗
+  ██╔══██║██╔══██╗██║   ██║██║   ██║╚════██║
+  ██║  ██║██║  ██║╚██████╔╝╚██████╔╝███████║
+  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
         </div>
 
         <h1 class="text-3xl sm:text-5xl font-semibold leading-tight mb-6 tracking-tight">
@@ -278,11 +223,10 @@
         </h1>
 
         <p class="text-base sm:text-lg text-muted mb-10 max-w-2xl leading-relaxed">
-          Argus picks your target, hunts with you in the terminal, and checks every finding against the program's real
-          triage history.
+          Argus picks your target, hunts with you in the terminal, and checks every finding against the program's real triage history.
         </p>
 
-        <form id="waitlist" class="term max-w-xl" onsubmit="return handleSubmit(event);">
+        <form id="waitlist" class="term max-w-xl" onsubmit="return handleSubmit(event)">
           <div class="term-bar">
             <span class="term-dot"></span>
             <span class="term-dot"></span>
@@ -293,15 +237,9 @@
             <div class="mb-2"><span class="prompt-user">argus</span> <span class="text-dim">init --waitlist</span></div>
             <div class="mb-3 text-muted">&gt; enter email to join the waitlist:</div>
             <div class="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                autocomplete="email"
+              <input type="email" name="email" required placeholder="you@example.com" autocomplete="email"
                 onfocus="revealExtras()"
-                class="input flex-1 rounded px-3 py-2 text-sm"
-              />
+                class="input flex-1 rounded px-3 py-2 text-sm" />
               <button type="submit" class="btn rounded px-5 py-2 text-sm cursor-pointer whitespace-nowrap">
                 ./submit
               </button>
@@ -311,33 +249,23 @@
               <div>
                 <div class="text-muted text-sm mb-2">&gt; what would you pay per month?</div>
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
-                  <label
-                    class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright"
-                  >
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
                     <input type="radio" name="wtp" value="0" class="accent-green-500" />
                     <span>$0</span>
                   </label>
-                  <label
-                    class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright"
-                  >
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
                     <input type="radio" name="wtp" value="5-10" class="accent-green-500" />
                     <span>$5–10</span>
                   </label>
-                  <label
-                    class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright"
-                  >
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
                     <input type="radio" name="wtp" value="11-25" class="accent-green-500" />
                     <span>$11–25</span>
                   </label>
-                  <label
-                    class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright"
-                  >
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
                     <input type="radio" name="wtp" value="26-50" class="accent-green-500" />
                     <span>$26–50</span>
                   </label>
-                  <label
-                    class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright"
-                  >
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded border border-soft cursor-pointer hover:border-bright">
                     <input type="radio" name="wtp" value="50+" class="accent-green-500" />
                     <span>$50+</span>
                   </label>
@@ -345,21 +273,15 @@
               </div>
 
               <div>
-                <div class="text-muted text-sm mb-2">
-                  &gt; what's the most frustrating part of bug bounty hunting for you right now?
-                </div>
-                <textarea
-                  name="pain"
-                  rows="2"
-                  placeholder="e.g. picking a target, setting up tooling, never finding anything reportable..."
-                  class="input w-full rounded px-3 py-2 text-sm leading-relaxed resize-none"
-                ></textarea>
+                <div class="text-muted text-sm mb-2">&gt; what's the most frustrating part of bug bounty hunting for you right now?</div>
+                <textarea name="pain" rows="2" placeholder="e.g. picking a target, setting up tooling, never finding anything reportable..."
+                  class="input w-full rounded px-3 py-2 text-sm leading-relaxed resize-none"></textarea>
               </div>
 
               <p class="text-xs text-dim">// optional, but helps us prioritize who gets in first.</p>
             </div>
 
-            <p class="text-xs text-dim mt-3"># we'll email you when early access opens.</p>
+            <p class="text-xs text-dim mt-3"># we'll email you once early access opens.</p>
           </div>
         </form>
       </section>
@@ -374,10 +296,7 @@
 
         <div class="grid md:grid-cols-3 gap-4">
           <div class="term glow-edge">
-            <div class="term-bar">
-              <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span
-              ><span class="ml-2">plan.sh</span>
-            </div>
+            <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="ml-2">plan.sh</span></div>
             <div class="term-body text-xs leading-relaxed">
               <div><span class="prompt-user">argus</span> <span class="text-dim">plan</span></div>
               <div class="text-muted">? skills:</div>
@@ -396,35 +315,23 @@
           </div>
 
           <div class="term glow-edge">
-            <div class="term-bar">
-              <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span
-              ><span class="ml-2">workspace.sh</span>
-            </div>
+            <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="ml-2">workspace.sh</span></div>
             <div class="term-body text-xs leading-relaxed">
               <div><span class="prompt-user">argus</span> <span class="text-dim">workspace open</span></div>
               <div class="text-dim">spinning up sandbox...</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">subfinder v2.6.4</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">httpx v1.6.8</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">nuclei v3.3.0</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">ffuf v2.1.0</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">caido + plugins</div>
-              <div class="accent">✓</div>
-              <div class="-mt-3 ml-3">last session restored</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">subfinder v2.6.4</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">httpx v1.6.8</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">nuclei v3.3.0</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">ffuf v2.1.0</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">caido + plugins</div>
+              <div class="accent">✓</div><div class="-mt-3 ml-3">last session restored</div>
               <div class="text-muted mt-2"># ready in 3s</div>
               <div>&gt; <span class="cursor"></span></div>
             </div>
           </div>
 
           <div class="term glow-edge">
-            <div class="term-bar">
-              <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span
-              ><span class="ml-2">validate.sh</span>
-            </div>
+            <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="ml-2">validate.sh</span></div>
             <div class="term-body text-xs leading-relaxed">
               <div><span class="prompt-user">argus</span> <span class="text-dim">validate ./finding.md</span></div>
               <div class="text-dim">parsing PoC...</div>
@@ -460,15 +367,9 @@
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">
-                portswigger academy done. 12 youtube playlists watched. you still don't know what to do on a real
-                program at 9pm on a tuesday.
-              </div>
+              <div class="text-muted mb-3">portswigger academy done. 12 youtube playlists watched. you still don't know what to do on a real program at 9pm on a tuesday.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>
-                argus replaces the next tutorial with a real workflow — a target picked for your level, a plan for that
-                specific app, tools already loaded. you start hunting in minutes, not months.
-              </div>
+              <div>argus replaces the next tutorial with a real workflow — a target picked for your level, a plan for that specific app, tools already loaded. you start hunting in minutes, not months.</div>
             </div>
           </details>
 
@@ -481,15 +382,9 @@
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">
-                the obvious targets are picked clean. automated scanners and the top 1% have farmed every login flow and
-                api endpoint worth looking at. you're competing for crumbs.
-              </div>
+              <div class="text-muted mb-3">the obvious targets are picked clean. automated scanners and the top 1% have farmed every login flow and api endpoint worth looking at. you're competing for crumbs.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>
-                argus scores programs by saturation and points you at the corners the scanners and pros skip — niche
-                flows, recent scope additions, programs without an army of hunters already on them.
-              </div>
+              <div>argus scores programs by saturation and points you at the corners the scanners and pros skip — niche flows, recent scope additions, programs without an army of hunters already on them.</div>
             </div>
           </details>
 
@@ -502,16 +397,9 @@
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">
-                a weird response, a hunch, a rabbit hole. you wrote up the PoC. triage closed it as informational. it
-                was confirmation bias the whole time.
-              </div>
+              <div class="text-muted mb-3">a weird response, a hunch, a rabbit hole. you wrote up the PoC. triage closed it as informational. it was confirmation bias the whole time.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>
-                the validator checks your finding against the program's real triage history — accepted reports, rejected
-                reports, common dupe patterns. you find out it's not a bug *before* you spend the afternoon writing it
-                up.
-              </div>
+              <div>the validator checks your finding against the program's real triage history — accepted reports, rejected reports, common dupe patterns. you find out it's not a bug *before* you spend the afternoon writing it up.</div>
             </div>
           </details>
 
@@ -524,15 +412,9 @@
             </summary>
             <div class="term-body text-sm leading-relaxed">
               <div class="text-dim mb-2"># symptoms</div>
-              <div class="text-muted mb-3">
-                some weeks you find things, some weeks you don't. you can't tell if you're improving, plateauing, or
-                just lucky. progress feels like vibes.
-              </div>
+              <div class="text-muted mb-3">some weeks you find things, some weeks you don't. you can't tell if you're improving, plateauing, or just lucky. progress feels like vibes.</div>
               <div class="text-dim mb-2"># fix</div>
-              <div>
-                every hunt is logged — targets picked, time spent, findings, validator scores, outcomes. you see what's
-                actually moving the needle and what's burning your evenings.
-              </div>
+              <div>every hunt is logged — targets picked, time spent, findings, validator scores, outcomes. you see what's actually moving the needle and what's burning your evenings.</div>
             </div>
           </details>
         </div>
@@ -547,51 +429,26 @@
         </div>
 
         <div class="term">
-          <div class="term-bar">
-            <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span
-            ><span class="ml-2">man(1) argus</span>
-          </div>
+          <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="ml-2">man(1) argus</span></div>
           <div class="term-body text-sm">
             <details class="border-b border-soft py-3">
-              <summary class="flex items-center gap-3">
-                <span class="chev accent">›</span><span>who is this for?</span>
-              </summary>
-              <p class="text-muted mt-3 ml-5">
-                hunters who've done a few CTFs or labs but haven't landed paid bounties consistently. if you can read
-                burp output but get stuck deciding what to actually try, this is for you.
-              </p>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>who is this for?</span></summary>
+              <p class="text-muted mt-3 ml-5">hunters who've done a few CTFs or labs but haven't landed paid bounties consistently. if you can read burp output but get stuck deciding what to actually try, this is for you.</p>
             </details>
             <details class="border-b border-soft py-3">
-              <summary class="flex items-center gap-3">
-                <span class="chev accent">›</span><span>how much does argus do vs. me?</span>
-              </summary>
-              <p class="text-muted mt-3 ml-5">
-                argus picks the target, runs the recon alongside you, and checks every finding against the program's
-                triage history. you make the calls. what's worth digging into, what to escalate, what to submit. it's a
-                co-pilot, not an autopilot.
-              </p>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>how much does argus do vs. me?</span></summary>
+              <p class="text-muted mt-3 ml-5">argus picks the target, runs the recon alongside you, and checks every finding against the program's triage history. you make the calls. what's worth digging into, what to escalate, what to submit. it's a co-pilot, not an autopilot.</p>
             </details>
             <details class="border-b border-soft py-3">
-              <summary class="flex items-center gap-3">
-                <span class="chev accent">›</span><span>which platforms does it support?</span>
-              </summary>
-              <p class="text-muted mt-3 ml-5">
-                hackerone and bugcrowd at launch. intigriti soon after. you can also point it at any program with a
-                public scope file.
-              </p>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>which platforms does it support?</span></summary>
+              <p class="text-muted mt-3 ml-5">hackerone and bugcrowd at launch. intigriti soon after. you can also point it at any program with a public scope file.</p>
             </details>
             <details class="border-b border-soft py-3">
-              <summary class="flex items-center gap-3">
-                <span class="chev accent">›</span><span>what does it cost?</span>
-              </summary>
-              <p class="text-muted mt-3 ml-5">
-                free for early access. pricing TBD — likely a flat monthly with a generous free tier.
-              </p>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>what does it cost?</span></summary>
+              <p class="text-muted mt-3 ml-5">free for early access. pricing TBD — likely a flat monthly with a generous free tier.</p>
             </details>
             <details class="py-3">
-              <summary class="flex items-center gap-3">
-                <span class="chev accent">›</span><span>when does it open?</span>
-              </summary>
+              <summary class="flex items-center gap-3"><span class="chev accent">›</span><span>when does it open?</span></summary>
               <p class="text-muted mt-3 ml-5">rolling invites starting soon. waitlist gets first access.</p>
             </details>
           </div>
@@ -601,21 +458,14 @@
       <!-- FINAL CTA -->
       <section class="mb-12">
         <div class="ascii text-[10px] sm:text-xs mb-6 select-none text-center" aria-hidden="true">
-          ╔══════════════════════════════════════════╗ ║ STOP HUNTING IN THE DARK. ║
-          ╚══════════════════════════════════════════╝
+╔══════════════════════════════════════════╗
+║       STOP HUNTING IN THE DARK.          ║
+╚══════════════════════════════════════════╝
         </div>
-        <p class="text-muted text-center mb-6 text-sm">
-          early access is opening soon. drop your email, we'll be in touch.
-        </p>
-        <form class="flex flex-col sm:flex-row gap-2 max-w-xl mx-auto" onsubmit="return handleSubmit(event);">
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@example.com"
-            autocomplete="email"
-            class="input flex-1 rounded px-3 py-2.5 text-sm"
-          />
+        <p class="text-muted text-center mb-6 text-sm">early access is opening soon. drop your email, we'll be in touch.</p>
+        <form class="flex flex-col sm:flex-row gap-2 max-w-xl mx-auto" onsubmit="return handleSubmit(event)">
+          <input type="email" name="email" required placeholder="you@example.com" autocomplete="email"
+            class="input flex-1 rounded px-3 py-2.5 text-sm" />
           <button type="submit" class="btn rounded px-5 py-2.5 text-sm cursor-pointer whitespace-nowrap">
             ./submit
           </button>
@@ -639,7 +489,7 @@
         const form = e.target;
         const data = {
           email: form.email.value,
-          wtp: form.wtp ? form.wtp.value || null : null,
+          wtp: form.wtp ? (form.wtp.value || null) : null,
           pain: form.pain ? form.pain.value : null,
         };
         const button = form.querySelector("button");
@@ -656,7 +506,7 @@
           button.textContent = "✓ on the list";
           form.email.disabled = true;
           if (form.pain) form.pain.disabled = true;
-          if (form.wtp) Array.from(form.wtp).forEach(r => (r.disabled = true));
+          if (form.wtp) Array.from(form.wtp).forEach(r => r.disabled = true);
         } catch (err) {
           button.textContent = original;
           button.disabled = false;
