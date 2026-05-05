@@ -2,6 +2,9 @@
   "name": "argus-marketing",
   "private": true,
   "type": "module",
+  "scripts": {
+    "start": "vercel env run -- vercel dev"
+  },
   "dependencies": {
     "@upstash/redis": "^1.34.0",
     "resend": "^4.0.0"
